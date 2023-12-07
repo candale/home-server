@@ -1,0 +1,29 @@
+#!/bin/bash
+
+set -o errexit   # abort on nonzero exitstatus
+set -o nounset   # abort on unbound variable
+set -o pipefail  # don't hide errors within pipes
+
+command="$1"
+
+args=
+case $command in
+    backup)
+        args='backup --all --ci'
+	;;
+    check)
+        args='check'
+	;;
+    *)
+        echo "Wrong command"
+	exit 1
+esac
+
+
+docker run --rm \
+	-v /home/andrei/data:/home/andrei/data \
+	-v /home/andrei/workspace:/home/andrei/workspace \
+	-v /usr/share/hassio:/usr/share/hassio \
+	cupcakearmy/autorestic \
+	autorestic --config /home/andrei/workspace/backup/autorestic.yaml $args
+

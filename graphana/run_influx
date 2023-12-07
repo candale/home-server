@@ -1,0 +1,6 @@
+#!/bin/bash
+
+docker run --rm --name influxdb -d -p 0.0.0.0:8086:8086 \
+      -v ~/data/monitoring/influxdb:/var/lib/influxdb2 \
+      -e DOCKER_INFLUXDB_INIT_ORG=candale \
+      influxdb:2.3

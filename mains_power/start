@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build -t hass_mains_power .
+docker run -d -it --rm --name hass_mains_power -v /sys:/host-sys -v $(pwd)/:/app -p 5555:5555  mains_power

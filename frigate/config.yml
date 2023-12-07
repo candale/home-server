@@ -1,0 +1,42 @@
+mqtt:
+  host: 192.168.1.20
+  user: "frigate"
+  password: "LlIzXrzdHPJ@0P^Q"
+cameras:
+  back:
+    ffmpeg:
+      inputs:
+        - path: rtsp://vlc:bambilica11@10.10.1.3:554/h264Preview_01_main
+          roles:
+            - detect
+            - record
+    detect:
+      width: 1080
+      height: 720
+      fps: 10
+objects:
+  track:
+    - person
+    - cat
+    - dog
+motion:
+  threshold: 150
+record:
+  enabled: True
+  retain:
+    days: 10
+    mode: motion
+  events:
+    retain:
+      default: 14
+      mode: active_objects
+      objects:
+        dog: 10
+        cat: 10
+        person: 20
+snapshots:
+  enabled: true
+
+birdseye:
+  enabled: True
+  mode: continuous

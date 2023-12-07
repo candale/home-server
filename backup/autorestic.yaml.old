@@ -1,0 +1,14 @@
+backends:
+  backblaze:
+    type: s3
+    path: s3.eu-central-003.backblazeb2.com/candale-server-1-backup
+    env:
+      aws_access_key_id: 003f1ce890c96000000000001
+      aws_secret_access_key: K003mObR7nt3n5gndroH6exLMCuNbDU
+locations:
+  workspace:
+    from:
+        - /home/andrei/data
+        - /home/andrei/workspace
+    to: backblaze
+version: 2

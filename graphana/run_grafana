@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run -d --rm --name grafana --user $(id -u $USER) --volume "~/data/monitoring/grafana:/var/lib/grafana" -p 3000:3000 grafana/grafana:latest
